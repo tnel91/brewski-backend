@@ -2,9 +2,11 @@
 
 ---
 
+
+
 ### **_Description_**
 
-#### Brewski App
+#### Brewski is an application that gathers breweries from around you and displays them. You can create an account and add them to your favorites list.
 
 ---
 
