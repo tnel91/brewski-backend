@@ -30,9 +30,10 @@
 
 ### **_Links_**
 
-#### [Check out our Trello board!](https://trello.com/b/IjF3jDqB/brewski-planner)
+### [Trello Board](https://trello.com/b/IjF3jDqB/brewski-planner)
 
 #### **↓ Component Hierarchy Diagram ↓**
+
 #### ![image](https://i.imgur.com/MQDtLfS.png)
 
 ---
