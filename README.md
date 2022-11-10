@@ -34,7 +34,7 @@
 
 #### **↓ Component Hierarchy Diagram ↓**
 
-#### ![image](https://i.imgur.com/MQDtLfS.png)
+#### ![image](https://i.imgur.com/PWi36xs.png)
 
 #### **↓ Entity Relationship Diagram ↓**
 
