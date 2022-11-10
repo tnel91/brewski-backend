@@ -24,10 +24,6 @@
 
 ---
 
-**↓ Entity Relationship Diagram ↓**
-
-![ERD](https://i.imgur.com/DA0aCRq.png)
-
 ### **_Credits_**
 
 #### Breweries API: [OpenBreweryDB](https://www.openbrewerydb.org/)
@@ -39,6 +35,10 @@
 #### **↓ Component Hierarchy Diagram ↓**
 
 #### ![image](https://i.imgur.com/MQDtLfS.png)
+
+#### **↓ Entity Relationship Diagram ↓**
+
+#### ![ERD](https://i.imgur.com/DA0aCRq.png)
 
 ---
 
