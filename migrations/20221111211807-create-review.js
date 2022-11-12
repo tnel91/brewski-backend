@@ -11,9 +11,14 @@ module.exports = {
       },
       authorId: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'users',
+          key: 'id'
+        }
       },
-      content: {
+      body: {
         type: Sequelize.STRING,
         allowNull: false
       },

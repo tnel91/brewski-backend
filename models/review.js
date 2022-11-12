@@ -9,15 +9,23 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Review.belongsTo(models.User, {
+        foreignKey: 'authorId'
+      })
     }
   }
   Review.init(
     {
       authorId: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'users',
+          key: 'id'
+        }
       },
-      content: {
+      body: {
         type: DataTypes.STRING,
         allowNull: false
       },
