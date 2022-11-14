@@ -12,6 +12,9 @@ module.exports = (sequelize, DataTypes) => {
       Review.belongsTo(models.User, {
         foreignKey: 'authorId'
       })
+      Review.hasOne(models.Review_Brewery, {
+        foreignKey: 'reviewId'
+      })
     }
   }
   Review.init(
@@ -24,6 +27,10 @@ module.exports = (sequelize, DataTypes) => {
           model: 'users',
           key: 'id'
         }
+      },
+      breweryId: {
+        type: DataTypes.INTEGER,
+        allowNull: false
       },
       body: {
         type: DataTypes.STRING,

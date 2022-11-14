@@ -19,11 +19,13 @@ module.exports = {
       },
       userName: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: true
       },
       email: {
         type: Sequelize.STRING,
         allowNull: false,
+        unique: true,
         validate: {
           isEmail: true
         }

@@ -18,6 +18,10 @@ module.exports = {
           key: 'id'
         }
       },
+      breweryId: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+      },
       body: {
         type: Sequelize.STRING,
         allowNull: false

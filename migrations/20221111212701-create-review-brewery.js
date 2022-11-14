@@ -11,9 +11,23 @@ module.exports = {
       },
       reviewId: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'reviews',
+          key: 'id'
+        }
       },
       breweryId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'breweries',
+          key: 'id'
+        }
+      },
+      userId: {
         type: Sequelize.INTEGER,
         allowNull: false
       },

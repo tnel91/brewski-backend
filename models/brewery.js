@@ -13,6 +13,9 @@ module.exports = (sequelize, DataTypes) => {
         through: models.User_Brewery,
         foreignKey: 'breweryId'
       })
+      Brewery.hasMany(models.Review_Brewery, {
+        foreignKey: 'breweryId'
+      })
     }
   }
   Brewery.init(
