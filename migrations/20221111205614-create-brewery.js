@@ -18,7 +18,7 @@ module.exports = {
         allowNull: false
       },
       beers: {
-        type: Sequelize.ARRAY,
+        type: Sequelize.ARRAY(Sequelize.STRING),
         allowNull: true
       },
       createdAt: {

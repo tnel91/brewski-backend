@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false
       },
       beers: {
-        type: DataTypes.ARRAY,
+        type: DataTypes.ARRAY(DataTypes.STRING),
         allowNull: true
       },
       createdAt: {
