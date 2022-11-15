@@ -6,12 +6,13 @@ module.exports = {
       id: {
         allowNull: false,
         autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        unique: true
       },
       authorId: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        primaryKey: true,
         onDelete: 'CASCADE',
         references: {
           model: 'users',
@@ -20,7 +21,13 @@ module.exports = {
       },
       breweryId: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        primaryKey: true,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'breweries',
+          key: 'id'
+        }
       },
       body: {
         type: Sequelize.STRING,
