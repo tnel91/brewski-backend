@@ -29,10 +29,50 @@ const updateBrewery = async (req, res) => {
 }
 const deleteBrewery = async (req, res) => {
   try {
-    await User.destroy({ where: { id: req.params.brewery_Id } })
+    await Brewery.destroy({ where: { id: req.params.brewery_Id } })
     res.send({
       msg: 'Breweery Deleted',
       payload: req.params.brewery_Id,
+      status: 'Ok'
+    })
+  } catch (error) {
+    throw error
+  }
+}
+
+const getUsers = async (req, res) => {
+  try {
+    const users = await User.findAll()
+    res.send(users)
+  } catch (error) {
+    throw error
+  }
+}
+const createUser = async (req, res) => {
+  try {
+    const users = await User.create({ ...req.body })
+    res.send(users)
+  } catch (error) {
+    throw error
+  }
+}
+const updateUser = async (req, res) => {
+  try {
+    const users = await User.update(
+      { ...req.body },
+      { where: { id: req.params.user_Id }, returning: true }
+    )
+    res.send(users)
+  } catch (error) {
+    throw error
+  }
+}
+const deleteUser = async (req, res) => {
+  try {
+    await User.destroy({ where: { id: req.params.user_Id } })
+    res.send({
+      msg: 'User Deleted',
+      payload: req.params.user_Id,
       status: 'Ok'
     })
   } catch (error) {
@@ -44,5 +84,9 @@ module.exports = {
   getBrewery,
   createBrewery,
   updateBrewery,
-  deleteBrewery
+  deleteBrewery,
+  getUsers,
+  createUser,
+  updateUser,
+  deleteUser
 }
