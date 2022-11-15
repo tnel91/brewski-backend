@@ -13,6 +13,11 @@ module.exports = (sequelize, DataTypes) => {
         through: models.User_Brewery,
         foreignKey: 'userId'
       })
+      User.belongsToMany(models.Review, {
+        as: 'favorite_reviews',
+        through: models.User_Review,
+        foreignKey: 'userId'
+      })
       User.hasMany(models.Review, {
         foreignKey: 'authorId'
       })
