@@ -1,8 +1,6 @@
 const router = require('express').Router()
 const controller = require('../controllers/Controller')
 
-const app = express()
-
 //routes here
 router.get('/brewery', controller.getBrewery)
 
@@ -14,4 +12,4 @@ router.delete('/:brewery_id', controller.deleteBrewery)
 
 //routes here
 
-module.exports = Router
+module.exports = router
