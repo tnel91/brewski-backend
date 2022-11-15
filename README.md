@@ -38,7 +38,7 @@
 
 #### **↓ Entity Relationship Diagram ↓**
 
-#### ![ERD](https://i.imgur.com/zzDwlUB.png)
+#### ![ERD](https://i.imgur.com/R3Manbi.png)
 
 ---
 
