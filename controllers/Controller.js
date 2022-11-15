@@ -1,4 +1,6 @@
-const { User, Brewery } = require('../models')
+const { User, Brewery, Review } = require('../models')
+
+//Breweries
 
 const getBrewery = async (req, res) => {
   try {
@@ -20,7 +22,7 @@ const updateBrewery = async (req, res) => {
   try {
     const brewery = await Brewery.update(
       { ...req.body },
-      { where: { id: req.params.brewery_Id }, returning: true }
+      { where: { id: req.params.brewery_id }, returning: true }
     )
     res.send(brewery)
   } catch (error) {
@@ -39,6 +41,8 @@ const deleteBrewery = async (req, res) => {
     throw error
   }
 }
+
+//Users
 
 const getUsers = async (req, res) => {
   try {
@@ -80,6 +84,51 @@ const deleteUser = async (req, res) => {
   }
 }
 
+//Review
+
+const getReview = async (req, res) => {
+  try {
+    const review = Review.findAll()
+    res.send(review)
+  } catch (error) {
+    throw error
+  }
+}
+
+const createReview = async (req, res) => {
+  try {
+    const review = await Review.create({ ...req.body })
+    res.send(review)
+  } catch (error) {
+    throw error
+  }
+}
+
+const updateReview = async (req, res) => {
+  try {
+    const review = await Review.update(
+      { ...req.body },
+      { where: { id: req.params.review_id }, returning: true }
+    )
+    res.send(review)
+  } catch (error) {
+    throw error
+  }
+}
+
+const deleteReview = async (req, res) => {
+  try {
+    await Review.destory({ where: { id: req.params.review_id } })
+    res.send({
+      msg: 'Review Deleted',
+      payload: req.params.review_id,
+      status: 'Ok'
+    })
+  } catch (error) {
+    throw error
+  }
+}
+
 module.exports = {
   getBrewery,
   createBrewery,
@@ -88,5 +137,9 @@ module.exports = {
   getUsers,
   createUser,
   updateUser,
-  deleteUser
+  deleteUser,
+  getReview,
+  createReview,
+  updateReview,
+  deleteReview
 }
