@@ -29,10 +29,10 @@ const updateBrewery = async (req, res) => {
 }
 const deleteBrewery = async (req, res) => {
   try {
-    await Brewery.destroy({ where: { id: req.params.brewery_Id } })
+    await Brewery.destroy({ where: { id: req.params.brewery_id } })
     res.send({
-      msg: 'Breweery Deleted',
-      payload: req.params.brewery_Id,
+      msg: 'Brewery Deleted',
+      payload: req.params.brewery_id,
       status: 'Ok'
     })
   } catch (error) {
@@ -69,10 +69,10 @@ const updateUser = async (req, res) => {
 }
 const deleteUser = async (req, res) => {
   try {
-    await User.destroy({ where: { id: req.params.user_Id } })
+    await User.destroy({ where: { id: req.params.user_id } })
     res.send({
       msg: 'User Deleted',
-      payload: req.params.user_Id,
+      payload: req.params.user_id,
       status: 'Ok'
     })
   } catch (error) {
