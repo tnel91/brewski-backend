@@ -13,7 +13,9 @@ module.exports = (sequelize, DataTypes) => {
         through: models.User_Brewery,
         foreignKey: 'breweryId'
       })
-      Brewery.hasMany(models.Review_Brewery, {
+      Brewery.belongsToMany(models.User, {
+        as: 'reviewedBrewery',
+        through: models.Review,
         foreignKey: 'breweryId'
       })
     }

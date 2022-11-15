@@ -12,8 +12,8 @@ module.exports = (sequelize, DataTypes) => {
       Review.belongsTo(models.User, {
         foreignKey: 'authorId'
       })
-      Review.hasOne(models.Review_Brewery, {
-        foreignKey: 'reviewId'
+      Review.belongsTo(models.Brewery, {
+        foreignKey: 'breweryId'
       })
       Review.belongsToMany(models.User, {
         as: 'reviews',
@@ -24,6 +24,11 @@ module.exports = (sequelize, DataTypes) => {
   }
   Review.init(
     {
+      id: {
+        allowNull: false,
+        autoIncrement: true,
+        type: DataTypes.INTEGER
+      },
       authorId: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -31,11 +36,18 @@ module.exports = (sequelize, DataTypes) => {
         references: {
           model: 'users',
           key: 'id'
-        }
+        },
+        primaryKey: true
       },
       breweryId: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'breweries',
+          key: 'id'
+        },
+        primaryKey: true
       },
       body: {
         type: DataTypes.STRING,
