@@ -1,4 +1,5 @@
 const { User } = require('../models')
+const middleware = require('../middleware')
 
 const Login = async (req, res) => {
     try {
@@ -10,7 +11,10 @@ const Login = async (req, res) => {
 
 const Register = async (req, res) => {
     try {
-
+        const { email, password } = req.body
+        let passwordDigest = await middleware.hashPassword(password)
+        const user = await User.create({ email, passwordDigest })
+        res.send(user)
     } catch (error) {
         throw error
     }
