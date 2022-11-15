@@ -2,36 +2,30 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('reviews', {
+    await queryInterface.createTable('user_reviews', {
       id: {
         allowNull: false,
         autoIncrement: true,
-        type: Sequelize.INTEGER,
-        unique: true
+        primaryKey: true,
+        type: Sequelize.INTEGER
       },
-      authorId: {
+      userId: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        primaryKey: true,
         onDelete: 'CASCADE',
         references: {
           model: 'users',
           key: 'id'
         }
       },
-      breweryId: {
+      reviewId: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        primaryKey: true,
         onDelete: 'CASCADE',
         references: {
-          model: 'breweries',
+          model: 'reviews',
           key: 'id'
         }
-      },
-      body: {
-        type: Sequelize.STRING,
-        allowNull: false
       },
       createdAt: {
         allowNull: false,
@@ -46,6 +40,6 @@ module.exports = {
     })
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('reviews')
+    await queryInterface.dropTable('user_reviews')
   }
 }

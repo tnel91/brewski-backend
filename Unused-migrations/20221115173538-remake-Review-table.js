@@ -1,4 +1,5 @@
 'use strict'
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
@@ -6,28 +7,27 @@ module.exports = {
       id: {
         allowNull: false,
         autoIncrement: true,
-        type: Sequelize.INTEGER,
-        unique: true
+        type: Sequelize.INTEGER
       },
       authorId: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        primaryKey: true,
         onDelete: 'CASCADE',
         references: {
           model: 'users',
           key: 'id'
-        }
+        },
+        primaryKey: true
       },
       breweryId: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        primaryKey: true,
         onDelete: 'CASCADE',
         references: {
           model: 'breweries',
           key: 'id'
-        }
+        },
+        primaryKey: true
       },
       body: {
         type: Sequelize.STRING,
@@ -45,6 +45,7 @@ module.exports = {
       }
     })
   },
+
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('reviews')
   }

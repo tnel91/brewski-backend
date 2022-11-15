@@ -9,11 +9,13 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       Brewery.belongsToMany(models.User, {
-        as: 'breweries',
+        as: 'liked_brewery',
         through: models.User_Brewery,
         foreignKey: 'breweryId'
       })
-      Brewery.hasMany(models.Review_Brewery, {
+      Brewery.belongsToMany(models.User, {
+        as: 'reviewed_brewery',
+        through: models.Review,
         foreignKey: 'breweryId'
       })
     }

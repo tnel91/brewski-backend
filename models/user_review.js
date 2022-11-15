@@ -1,7 +1,7 @@
 'use strict'
 const { Model } = require('sequelize')
 module.exports = (sequelize, DataTypes) => {
-  class Review_Brewery extends Model {
+  class User_Review extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -9,16 +9,19 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Review_Brewery.belongsTo(models.Brewery, {
-        foreignKey: 'breweryId'
-      })
-      Review_Brewery.belongsTo(models.Review, {
-        foreignKey: 'reviewId'
-      })
     }
   }
-  Review_Brewery.init(
+  User_Review.init(
     {
+      userId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'users',
+          key: 'id'
+        }
+      },
       reviewId: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -27,19 +30,6 @@ module.exports = (sequelize, DataTypes) => {
           model: 'reviews',
           key: 'id'
         }
-      },
-      breweryId: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        onDelete: 'CASCADE',
-        references: {
-          model: 'breweries',
-          key: 'id'
-        }
-      },
-      userId: {
-        type: DataTypes.INTEGER,
-        allowNull: false
       },
       createdAt: {
         allowNull: false,
@@ -54,9 +44,9 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: 'Review_Brewery',
-      tableName: 'review_breweries'
+      modelName: 'User_Review',
+      tableName: 'user_reviews'
     }
   )
-  return Review_Brewery
+  return User_Review
 }

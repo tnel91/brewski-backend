@@ -1,6 +1,10 @@
 const router = require('express').Router()
 const controller = require('../controllers/Controller')
 
+Router.get('/breweries', controller.getAllBreweries)
+
+Router.get('/breweries/:breweryId', controller.getOneBrewery)
+
 //routes here
 
 //Breweries
