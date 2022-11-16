@@ -30,6 +30,8 @@ router.delete('/:user_id', controller.deleteUser)
 
 router.get('/reviews', controller.getReview)
 
+router.get('/reviews/:brewery_id', controller.getBreweryReviews)
+
 router.post('/reviews/new', controller.createReview)
 
 router.put('/:review_id', controller.updateReview)
