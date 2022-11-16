@@ -10,6 +10,16 @@ const getBrewery = async (req, res) => {
     throw error
   }
 }
+
+const getOneBrewery = async (req, res) => {
+  try {
+    const brewery = await Brewery.findByPk(req.params.brewery_id)
+    res.send(brewery)
+  } catch (error) {
+    throw error
+  }
+}
+
 const createBrewery = async (req, res) => {
   try {
     const brewery = await Brewery.create({ ...req.body })
@@ -88,8 +98,21 @@ const deleteUser = async (req, res) => {
 
 const getReview = async (req, res) => {
   try {
-    const review = Review.findAll()
+    const review = await Review.findAll()
     res.send(review)
+  } catch (error) {
+    throw error
+  }
+}
+
+const getBreweryReviews = async (req, res) => {
+  try {
+    const reviews = await Review.findAll({
+      where: {
+        breweryId: req.params.brewery_id
+      }
+    })
+    res.send(reviews)
   } catch (error) {
     throw error
   }
@@ -131,6 +154,7 @@ const deleteReview = async (req, res) => {
 
 module.exports = {
   getBrewery,
+  getOneBrewery,
   createBrewery,
   updateBrewery,
   deleteBrewery,
@@ -139,6 +163,7 @@ module.exports = {
   updateUser,
   deleteUser,
   getReview,
+  getBreweryReviews,
   createReview,
   updateReview,
   deleteReview
