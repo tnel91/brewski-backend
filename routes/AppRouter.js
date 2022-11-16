@@ -2,9 +2,9 @@ const router = require('express').Router()
 const controller = require('../controllers/Controller')
 const middleware = require('../middleware')
 
-Router.get('/breweries', controller.getAllBreweries)
+// Router.get('/breweries', controller.getAllBreweries)
 
-Router.get('/breweries/:breweryId', controller.getOneBrewery)
+// Router.get('/breweries/:breweryId', controller.getOneBrewery)
 
 //routes here
 
