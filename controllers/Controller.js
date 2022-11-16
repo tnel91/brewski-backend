@@ -161,9 +161,11 @@ const Login = async (req, res) => {
           where: { email: req.body.email },
           raw: true
       })
+      console.log(user)
+      console.log(req.body.password)
       if (
           user && 
-          middleware.comparePassword(user.passwordScramble, req.body.password)
+          middleware.comparePassword(user.password, req.body.password)
       ) {
           let payload = {
               id: user.id,
