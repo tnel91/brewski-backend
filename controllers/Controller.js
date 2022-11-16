@@ -98,7 +98,7 @@ const deleteUser = async (req, res) => {
 
 const getReview = async (req, res) => {
   try {
-    const review = Review.findAll()
+    const review = await Review.findAll()
     res.send(review)
   } catch (error) {
     throw error
@@ -107,7 +107,7 @@ const getReview = async (req, res) => {
 
 const getBreweryReviews = async (req, res) => {
   try {
-    const reviews = Review.findAll({
+    const reviews = await Review.findAll({
       where: {
         breweryId: req.params.brewery_id
       }
