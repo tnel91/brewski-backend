@@ -8,7 +8,7 @@ const getBrewery = async (req, res) => {
     const brewerys = await Brewery.findAll()
     res.send(brewerys)
   } catch (error) {
-    throw error
+    res.status(500).send({ status: 'Error', msg: error.message })
   }
 }
 
@@ -17,7 +17,7 @@ const getOneBrewery = async (req, res) => {
     const brewery = await Brewery.findByPk(req.params.brewery_id)
     res.send(brewery)
   } catch (error) {
-    throw error
+    res.status(500).send({ status: 'Error', msg: error.message })
   }
 }
 
@@ -26,7 +26,7 @@ const createBrewery = async (req, res) => {
     const brewery = await Brewery.create({ ...req.body })
     res.send(brewery)
   } catch (error) {
-    throw error
+    res.status(500).send({ status: 'Error', msg: error.message })
   }
 }
 const updateBrewery = async (req, res) => {
@@ -37,7 +37,7 @@ const updateBrewery = async (req, res) => {
     )
     res.send(brewery)
   } catch (error) {
-    throw error
+    res.status(500).send({ status: 'Error', msg: error.message })
   }
 }
 const deleteBrewery = async (req, res) => {
@@ -49,7 +49,7 @@ const deleteBrewery = async (req, res) => {
       status: 'Ok'
     })
   } catch (error) {
-    throw error
+    res.status(500).send({ status: 'Error', msg: error.message })
   }
 }
 
@@ -60,7 +60,7 @@ const getUsers = async (req, res) => {
     const users = await User.findAll()
     res.send(users)
   } catch (error) {
-    throw error
+    res.status(500).send({ status: 'Error', msg: error.message })
   }
 }
 const createUser = async (req, res) => {
@@ -68,7 +68,7 @@ const createUser = async (req, res) => {
     const users = await User.create({ ...req.body })
     res.send(users)
   } catch (error) {
-    throw error
+    res.status(500).send({ status: 'Error', msg: error.message })
   }
 }
 const updateUser = async (req, res) => {
@@ -79,7 +79,7 @@ const updateUser = async (req, res) => {
     )
     res.send(users)
   } catch (error) {
-    throw error
+    res.status(500).send({ status: 'Error', msg: error.message })
   }
 }
 const deleteUser = async (req, res) => {
@@ -91,7 +91,7 @@ const deleteUser = async (req, res) => {
       status: 'Ok'
     })
   } catch (error) {
-    throw error
+    res.status(500).send({ status: 'Error', msg: error.message })
   }
 }
 
@@ -102,7 +102,7 @@ const getReview = async (req, res) => {
     const review = await Review.findAll()
     res.send(review)
   } catch (error) {
-    throw error
+    res.status(500).send({ status: 'Error', msg: error.message })
   }
 }
 
@@ -115,7 +115,7 @@ const getBreweryReviews = async (req, res) => {
     })
     res.send(reviews)
   } catch (error) {
-    throw error
+    res.status(500).send({ status: 'Error', msg: error.message })
   }
 }
 
@@ -124,7 +124,7 @@ const createReview = async (req, res) => {
     const review = await Review.create({ ...req.body })
     res.send(review)
   } catch (error) {
-    throw error
+    res.status(500).send({ status: 'Error', msg: error.message })
   }
 }
 
@@ -136,7 +136,7 @@ const updateReview = async (req, res) => {
     )
     res.send(review)
   } catch (error) {
-    throw error
+    res.status(500).send({ status: 'Error', msg: error.message })
   }
 }
 
@@ -149,47 +149,51 @@ const deleteReview = async (req, res) => {
       status: 'Ok'
     })
   } catch (error) {
-    throw error
+    res.status(500).send({ status: 'Error', msg: error.message })
   }
 }
 
-//Login and Register 
+//Login and Register
 
 const Login = async (req, res) => {
   try {
-      const user = await User.findOne({
-          where: { email: req.body.email },
-          raw: true
-      })
-      console.log(user)
-      console.log(req.body.password)
-      if (
-          user && 
-          middleware.comparePassword(user.password, req.body.password)
-      ) {
-          let payload = {
-              id: user.id,
-              email: user.email
-          }
-          let token = middleware.createToken(payload)
-          return res.send({ user: payload, token })
+    const user = await User.findOne({
+      where: { email: req.body.email },
+      raw: true
+    })
+    console.log(user)
+    console.log(req.body.password)
+    if (user && middleware.comparePassword(user.password, req.body.password)) {
+      let payload = {
+        id: user.id,
+        email: user.email
       }
-      res.status(401).send({ status: 'Error', msg: 'Unauthorized' })
+      let token = middleware.createToken(payload)
+      return res.send({ user: payload, token })
+    }
+    res.status(401).send({ status: 'Error', msg: 'Unauthorized' })
   } catch (error) {
-      throw error
+    res.status(500).send({ status: 'Error', msg: error.message })
   }
 }
 
 const Register = async (req, res) => {
   try {
-      const { firstName, lastName, userName, email, password, address } = req.body
-      let passwordScramble = await middleware.hashPassword(password)
-      const user = await User.create({ firstName, lastName, userName, email, password: passwordScramble, address })
-      res.send(user)
+    const { firstName, lastName, userName, email, password, address } = req.body
+    let passwordScramble = await middleware.hashPassword(password)
+    const user = await User.create({
+      firstName,
+      lastName,
+      userName,
+      email,
+      password: passwordScramble,
+      address
+    })
+    res.send(user)
   } catch (error) {
-      throw error
+    res.status(500).send({ status: 'Error', msg: error.message })
   }
-} 
+}
 
 module.exports = {
   getBrewery,
@@ -206,6 +210,6 @@ module.exports = {
   createReview,
   updateReview,
   deleteReview,
-  Login, 
+  Login,
   Register
 }
