@@ -9,7 +9,6 @@ module.exports = {
         {
           firstName: 'John',
           lastName: 'Deer',
-          userName: 'jdeer123',
           email: 'john@email.com',
           password: 'asdf',
           address: '123 1st st, Decatur, GA'
@@ -17,7 +16,6 @@ module.exports = {
         {
           firstName: 'Jane',
           lastName: 'Doe',
-          userName: 'jdoe555',
           email: 'jane@gmail.com',
           password: 'password',
           address: '12 Road Lane, Seward, AK'
@@ -25,7 +23,6 @@ module.exports = {
         {
           firstName: 'Timmy',
           lastName: 'Timmerson',
-          userName: 'ttimmerson',
           email: 'timmy@internet.com',
           password: 'GOODpassword1435fasd13',
           address: '225 Baker St, Atlanta, GA'
