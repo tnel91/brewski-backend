@@ -8,6 +8,8 @@ const middleware = require('../middleware')
 
 router.get('/brewery', controller.getBrewery)
 
+router.get('/brewery/:brewery_id', controller.getOneBrewery)
+
 router.post('/create_router', controller.createBrewery)
 
 router.put('/:brewery_id', controller.updateBrewery)
