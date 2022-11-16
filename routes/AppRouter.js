@@ -40,6 +40,9 @@ router.delete('/:review_id', controller.deleteReview)
 
 //Login Register Authentication
 
+router.post('/signin', controller.Login)
+router.post('/register', controller.Register)
+
 router.post(
     '/',
     middleware.stripToken,

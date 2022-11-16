@@ -1,4 +1,5 @@
 const { User, Brewery, Review } = require('../models')
+const middleware = require('../middleware')
 
 //Breweries
 
@@ -129,6 +130,42 @@ const deleteReview = async (req, res) => {
   }
 }
 
+//Login and Register 
+
+const Login = async (req, res) => {
+  try {
+      const user = await User.findOne({
+          where: { email: req.body.email },
+          raw: true
+      })
+      if (
+          user && 
+          middleware.comparePassword(user.passwordScramble, req.body.password)
+      ) {
+          let payload = {
+              id: user.id,
+              email: user.email
+          }
+          let token = middleware.createToken(payload)
+          return res.send({ user: payload, token })
+      }
+      res.status(401).send({ status: 'Error', msg: 'Unauthorized' })
+  } catch (error) {
+      throw error
+  }
+}
+
+const Register = async (req, res) => {
+  try {
+      const { firstName, lastName, userName, email, password, address } = req.body
+      let passwordScramble = await middleware.hashPassword(password)
+      const user = await User.create({ firstName, lastName, userName, email, password: passwordScramble, address })
+      res.send(user)
+  } catch (error) {
+      throw error
+  }
+} 
+
 module.exports = {
   getBrewery,
   createBrewery,
@@ -141,5 +178,7 @@ module.exports = {
   getReview,
   createReview,
   updateReview,
-  deleteReview
+  deleteReview,
+  Login, 
+  Register
 }
