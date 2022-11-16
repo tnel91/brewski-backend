@@ -2,10 +2,6 @@ const router = require('express').Router()
 const controller = require('../controllers/Controller')
 const middleware = require('../middleware')
 
-Router.get('/breweries', controller.getAllBreweries)
-
-Router.get('/breweries/:breweryId', controller.getOneBrewery)
-
 //routes here
 
 //Breweries
@@ -41,10 +37,10 @@ router.delete('/:review_id', controller.deleteReview)
 //Login Register Authentication
 
 router.post(
-    '/',
-    middleware.stripToken,
-    middleware.verifyToken,
-    controller.createUser
+  '/',
+  middleware.stripToken,
+  middleware.verifyToken,
+  controller.createUser
 )
 
 //routes here
