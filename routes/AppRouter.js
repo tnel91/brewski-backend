@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const controller = require('../controllers/Controller')
+const middleware = require('../middleware')
 
 Router.get('/breweries', controller.getAllBreweries)
 
@@ -36,6 +37,15 @@ router.post('/reviews/new', controller.createReview)
 router.put('/:review_id', controller.updateReview)
 
 router.delete('/:review_id', controller.deleteReview)
+
+//Login Register Authentication
+
+router.post(
+    '/',
+    middleware.stripToken,
+    middleware.verifyToken,
+    controller.createUser
+)
 
 //routes here
 module.exports = router
