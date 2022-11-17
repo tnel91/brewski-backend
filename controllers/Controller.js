@@ -32,7 +32,7 @@ const createBrewery = async (req, res) => {
 const updateBrewery = async (req, res) => {
   try {
     const brewery = await Brewery.update(
-      { ...req.body },
+      { ...req.body, updatedAt: new Date() },
       { where: { id: req.params.brewery_id }, returning: true }
     )
     res.send(brewery)
@@ -74,7 +74,7 @@ const createUser = async (req, res) => {
 const updateUser = async (req, res) => {
   try {
     const users = await User.update(
-      { ...req.body },
+      { ...req.body, updatedAt: new Date() },
       { where: { id: req.params.user_Id }, returning: true }
     )
     res.send(users)
@@ -145,7 +145,7 @@ const createReview = async (req, res) => {
 const updateReview = async (req, res) => {
   try {
     const review = await Review.update(
-      { ...req.body },
+      { ...req.body, updatedAt: new Date() },
       { where: { id: req.params.review_id }, returning: true }
     )
     res.send(review)
