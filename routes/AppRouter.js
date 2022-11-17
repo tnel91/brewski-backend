@@ -44,13 +44,22 @@ router.delete('/:review_id', controller.deleteReview)
 
 router.post('/signin', controller.Login)
 router.post('/register', controller.Register)
-
 router.post(
   '/',
   middleware.stripToken,
   middleware.verifyToken,
   controller.createUser
 )
+
+//Session Routes
+
+router.get('/session',
+middleware.stripToken,
+middleware.verifyToken,
+controller.CheckSession
+)
+
+
 
 //routes here
 module.exports = router
