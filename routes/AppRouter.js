@@ -14,7 +14,7 @@ router.post('/create_router', controller.createBrewery)
 
 router.put('/:brewery_id', controller.updateBrewery)
 
-router.delete('/:brewery_id', controller.deleteBrewery)
+router.delete('/brewery/:brewery_id', controller.deleteBrewery)
 
 //User
 
@@ -24,7 +24,7 @@ router.post('/users/new', controller.createUser)
 
 router.put('/:user_id', controller.updateUser)
 
-router.delete('/:user_id', controller.deleteUser)
+router.delete('/user/:user_id', controller.deleteUser)
 
 //Reviews
 
@@ -38,7 +38,7 @@ router.post('/reviews/new', controller.createReview)
 
 router.put('/reviews/edit/:review_id', controller.updateReview)
 
-router.delete('/:review_id', controller.deleteReview)
+router.delete('/reviews/delete/:review_id', controller.deleteReview)
 
 //Login Register Authentication
 
@@ -53,13 +53,12 @@ router.post(
 
 //Session Routes
 
-router.get('/session',
-middleware.stripToken,
-middleware.verifyToken,
-controller.CheckSession
+router.get(
+  '/session',
+  middleware.stripToken,
+  middleware.verifyToken,
+  controller.CheckSession
 )
-
-
 
 //routes here
 module.exports = router

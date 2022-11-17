@@ -156,7 +156,11 @@ const updateReview = async (req, res) => {
 
 const deleteReview = async (req, res) => {
   try {
-    await Review.destory({ where: { id: req.params.review_id } })
+    await Review.destroy({
+      where: {
+        id: req.params.review_id
+      }
+    })
     res.send({
       msg: 'Review Deleted',
       payload: req.params.review_id,
@@ -213,7 +217,6 @@ const CheckSession = async (req, res) => {
   console.log(res.locals)
   const { payload } = res.locals
   res.send(payload)
-  
 }
 
 module.exports = {
