@@ -32,9 +32,11 @@ router.get('/reviews', controller.getReview)
 
 router.get('/reviews/:brewery_id', controller.getBreweryReviews)
 
+router.get('/reviews/:brewery_id/:author_id', controller.getUserBreweryReview)
+
 router.post('/reviews/new', controller.createReview)
 
-router.put('/:review_id', controller.updateReview)
+router.put('/reviews/edit/:review_id', controller.updateReview)
 
 router.delete('/:review_id', controller.deleteReview)
 

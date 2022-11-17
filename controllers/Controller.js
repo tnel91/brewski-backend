@@ -119,6 +119,20 @@ const getBreweryReviews = async (req, res) => {
   }
 }
 
+const getUserBreweryReview = async (req, res) => {
+  try {
+    const review = await Review.findOne({
+      where: {
+        authorId: req.params.author_id,
+        breweryId: req.params.brewery_id
+      }
+    })
+    res.send(review)
+  } catch (error) {
+    res.status(500).send({ status: 'Error', msg: error.message })
+  }
+}
+
 const createReview = async (req, res) => {
   try {
     const review = await Review.create({ ...req.body })
@@ -207,6 +221,7 @@ module.exports = {
   deleteUser,
   getReview,
   getBreweryReviews,
+  getUserBreweryReview,
   createReview,
   updateReview,
   deleteReview,
