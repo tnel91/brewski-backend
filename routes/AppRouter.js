@@ -10,21 +10,21 @@ router.get('/brewery', controller.getBrewery)
 
 router.get('/brewery/:brewery_id', controller.getOneBrewery)
 
-router.post('/create_router', controller.createBrewery)
+router.post('/brewery/new', controller.createBrewery)
 
-router.put('/:brewery_id', controller.updateBrewery)
+router.put('/brewery/:brewery_id', controller.updateBrewery)
 
 router.delete('/brewery/:brewery_id', controller.deleteBrewery)
 
 //User
 
-router.get('/user', controller.getUsers)
+router.get('/users', controller.getUsers)
 
 router.post('/users/new', controller.createUser)
 
-router.put('/:user_id', controller.updateUser)
+router.put('/users/:user_id', controller.updateUser)
 
-router.delete('/user/:user_id', controller.deleteUser)
+router.delete('/users/:user_id', controller.deleteUser)
 
 //Reviews
 
