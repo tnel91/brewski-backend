@@ -2,11 +2,18 @@
 
 ### **_Description_**
 
-#### Brewski is an application that gathers breweries from around you using the OpenBreweryDB and displays them for you! Has full CRUD and authentication/authorization functionality; you can create your own account and start adding breweries that catch your eye to your favorites list.
+#### Brewski is an application that gathers breweries from around the world, displays them for you and allows you to leave your own review! 
+#### This application has full CRUD and authentication/authorization functionality; you can create your own account and start adding reviews to your favorite brewery!
 
 ---
 
-### **_First Look_**
+### **_Website Link_**
+
+### [Brewkski Deployed Application](https://brewski.herokuapp.com/)
+
+---
+
+### **_Quick Glance_**
 
 #### **↓ Home Page ↓**
 
@@ -38,23 +45,18 @@
 
 - `Fork` and `Clone`
 - `npm install`
-- `sequelize db:create`
-- `sequelize db:migrate`
+- `npm start`
 
 ---
 
 ### **_Technologies Used_**
 
-- Node.js
-- Express
-- PostgreSQL
-- Sequelize
+- PERN Stack
+- CSS
+- Axios
 
 ---
 
-### **_Credits_**
-
-#### Breweries API: [OpenBreweryDB](https://www.openbrewerydb.org/)
 
 ### **_Links_**
 
@@ -66,7 +68,7 @@
 
 #### **↓ Entity Relationship Diagram ↓**
 
-#### ![ERD](https://i.imgur.com/R3Manbi.png)
+#### ![ERD](https://i.imgur.com/zzDwlUB.png)
 
 ---
 
@@ -91,3 +93,15 @@
 
 [LinkedIn](https://www.linkedin.com/in/james--fleming/) |
 [GitHub](https://github.com/James-fleming394)
+
+---
+
+## **_Credits_**
+
+[Project Prompt](https://github.com/SEI-R-9-19/u3_project_prompt)
+
+[Stack Overflow](https://stackoverflow.com/)
+
+[W3 School](https://www.w3schools.com/)
+
+[MDN](https://developer.mozilla.org/en-US/)
