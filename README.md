@@ -12,6 +12,10 @@
 
 ### [Brewkski Deployed Application](https://brewski.herokuapp.com/)
 
+### [Back-end Repo](https://github.com/tnel91/brewski-backend)
+
+### [Front-end Repo](https://github.com/tnel91/brewski-frontend)
+
 ---
 
 ### **_Quick Glance_**
