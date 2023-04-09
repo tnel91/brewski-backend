@@ -208,7 +208,7 @@ const Register = async (req, res) => {
       password: passwordScramble,
       address
     })
-    res.send(user)
+    res.send({ status: 'Created new user!' })
   } catch (error) {
     res.status(500).send({ status: 'Error', msg: error.message })
   }
