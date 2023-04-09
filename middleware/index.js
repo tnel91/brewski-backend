@@ -10,7 +10,7 @@ const hashPassword = async (password) => {
   return hashedPassword
 }
 
-const comparePassword = async (storedPassword, password) => {
+const comparePassword = async (password, storedPassword) => {
   let passwordMatch = await bcrypt.compare(password, storedPassword)
   return passwordMatch
 }
@@ -42,7 +42,7 @@ const verifyToken = (req, res, next) => {
     }
     res.status(401).send({ status: 'Error', msg: 'Unauthorized' })
   } catch (error) {
-    console.log('error')
+    console.log('TOKEN NOT VERIFIED')
     res.status(401).send({ status: 'Error', msg: 'Unauthorized' })
   }
 }
