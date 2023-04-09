@@ -10,7 +10,7 @@
 
 ### **_Website Link_**
 
-### [Brewkski Deployed Application](https://brewski.herokuapp.com/)
+### [Brewkski Deployed Application](https://brewski-app.netlify.app/)
 
 ### [Back-end Repo](https://github.com/tnel91/brewski-backend)
 
